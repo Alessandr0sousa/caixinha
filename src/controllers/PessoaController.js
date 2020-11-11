@@ -7,10 +7,10 @@ const up = 'Update pessoa Set ?';
 
 module.exports = {
     async index(req, res) {
-        const id = uniqid();
+        // const id = uniqid();
         con.query('select * from pessoa', (err, rows) => {
             try {
-                res.json([id, rows]);
+                res.json(rows);
             } catch (error) {
                 console.error(err);
             }

@@ -7,7 +7,7 @@ const up = 'UPDATE cotas Set ? where id_cota = ?';
 
 module.exports = {
     async index(req, res) {
-        const id = uniqid();
+        // const id = uniqid();
         con.query('select * from cotas', (err, rows) => {
             try {
                 res.json([id, rows]);
