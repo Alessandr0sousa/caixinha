@@ -17,7 +17,7 @@ module.exports = {
         });
     },
     async show(req, res) {
-        con.query('select * from pessoa where id_pes = ?', [req.params.id], (err, rows) => {
+        con.query('SELECT * FROM cota_pessoa where id_pes = ?', [req.params.id], (err, rows) => {
             try {
                 res.json(rows);
             } catch (error) {
