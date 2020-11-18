@@ -16,5 +16,13 @@ routes.get('/cota/:id', CotaController.show);
 routes.delete('/cota/:id', CotaController.destroy);
 routes.post('/cota', CotaController.store);
 routes.put('/cota/:id', CotaController.update);
+//Rotas da tabela Eprestimo
+const EmprestimoController = require('./controllers/EmprestimoController');
+
+routes.get('/emprestimo', EmprestimoController.index);
+routes.get('/emprestimo/:id', EmprestimoController.show);
+routes.delete('/emprestimo/:id', EmprestimoController.destroy);
+routes.post('/emprestimo', EmprestimoController.store);
+routes.put('/emprestimo/:id', EmprestimoController.update);
 
 module.exports = routes;
