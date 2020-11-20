@@ -7,7 +7,6 @@ const up = 'Update pessoa Set ?';
 
 module.exports = {
     async index(req, res) {
-        // const id = uniqid();
         con.query('SELECT * FROM cota_pessoa', (err, rows) => {
             try {
                 res.json(rows);

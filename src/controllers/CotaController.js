@@ -3,7 +3,7 @@ const uniqid = require('uniqid');
 
 const ins = 'INSERT INTO cotas set ?';
 
-const up = 'UPDATE cotas Set ? where id_cota = ?';
+const up = 'UPDATE cotas Set ? where pessoa = ?';
 
 module.exports = {
     async index(req, res) {
@@ -17,7 +17,7 @@ module.exports = {
         });
     },
     async show(req, res) {
-        con.query('select * from cotas where id_cota = ?', [req.params.id], (err, rows) => {
+        con.query('select * from cotas where pessoa = ?', [req.params.id], (err, rows) => {
             try {
                 res.json(rows);
             } catch (error) {
@@ -26,7 +26,7 @@ module.exports = {
         });
     },
     async destroy(req, res) {
-        con.query('Delete from cotas where id_cota = ?', [req.params.id], (err, rows) => {
+        con.query('Delete from cotas where pessoa = ?', [req.params.id], (err, rows) => {
             try {
                 res.send('Successfully deleted');
             } catch (error) {
