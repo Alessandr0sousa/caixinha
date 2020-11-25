@@ -3,7 +3,7 @@ const uniqid = require('uniqid');
 
 const ins = 'INSERT INTO cotas set ?';
 
-const up = 'UPDATE cotas Set ? where pessoa = ?';
+const up = 'UPDATE cotas Set ? where id_cota = ?';
 
 module.exports = {
     async index(req, res) {
@@ -17,7 +17,7 @@ module.exports = {
         });
     },
     async show(req, res) {
-        con.query('select * from cotas where pessoa = ?', [req.params.id], (err, rows) => {
+        con.query('select * from cotas where id_cota = ?', [req.params.id], (err, rows) => {
             try {
                 res.json(rows);
             } catch (error) {
@@ -26,7 +26,7 @@ module.exports = {
         });
     },
     async destroy(req, res) {
-        con.query('Delete from cotas where pessoa = ?', [req.params.id], (err, rows) => {
+        con.query('Delete from cotas where id_cota = ?', [req.params.id], (err, rows) => {
             try {
                 res.send('Successfully deleted');
             } catch (error) {
@@ -45,8 +45,16 @@ module.exports = {
         });
     },
     async update(req, res) {
-        con.query(up, [req.body, req.params.id], (err, rows) => {
+        const parc ={} 
+        const query = {}
+
+        query['p'+req.body.parcela] = 1;
+
+        parc[con.query(`select ${query} from cotas where id_cota = ?`, [req.params.id])] 
+
+        con.query(up, [query, req.params.id], (err, rows) => {
             try {
+                console.log([query])
                 console.log("Successfully changed");
                 res.json(rows);
             } catch (error) {

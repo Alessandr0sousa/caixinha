@@ -15,7 +15,7 @@ routes.get('/cota', CotaController.index);
 routes.get('/cota/:id', CotaController.show);
 routes.delete('/cota/:id', CotaController.destroy);
 routes.post('/cota', CotaController.store);
-routes.put('/cota/:id', CotaController.update);
+routes.patch('/cota/:id', CotaController.update);
 //Rotas da tabela Eprestimo
 const EmprestimoController = require('./controllers/EmprestimoController');
 

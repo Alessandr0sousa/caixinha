@@ -16,9 +16,18 @@ module.exports = {
         });
     },
     async show(req, res) {
-        con.query('SELECT * FROM cota_pessoa where id_pes = ?', [req.params.id], (err, rows) => {
+        con.query('SELECT * FROM cota_pessoa where id_cota = ?', [req.params.id], (err, rows) => {
             try {
-                res.json(rows);
+                const response = rows.map(row=> {
+                    const{id_pes, id_cota, nome, ...parcela} = row;
+                    return{
+                        id_pes,
+                        id_cota,
+                        nome,
+                        parcelas: Object.values(parcela)
+                    }
+                });
+                return res.json(response);
             } catch (error) {
                 res.json(err);
             }
