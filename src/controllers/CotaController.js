@@ -50,7 +50,7 @@ module.exports = {
 
         query['p'+req.body.parcela] = 1;
 
-        parc[con.query(`select ${query} from cotas where id_cota = ?`, [req.params.id])] 
+        // parc[con.query(`select ${query} from cotas where id_cota = ?`, [req.params.id])] 
 
         con.query(up, [query, req.params.id], (err, rows) => {
             try {
