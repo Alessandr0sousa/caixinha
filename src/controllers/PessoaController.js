@@ -1,9 +1,8 @@
 const con = require('../db');
-const uniqid = require('uniqid');
 
 const ins = 'INSERT INTO pessoa set ?';
 
-const up = 'Update pessoa Set ?';
+const up = 'Update pessoa Set ? where id_pes ?';
 
 module.exports = {
     async index(req, res) {

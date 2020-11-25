@@ -45,16 +45,12 @@ module.exports = {
         });
     },
     async update(req, res) {
-        const parc ={} 
+        const parc = [req.body.v] 
         const query = {}
+        query['p'+req.body.parcela] = parc;
 
-        query['p'+req.body.parcela] = 1;
-
-        // parc[con.query(`select ${query} from cotas where id_cota = ?`, [req.params.id])] 
-
-        con.query(up, [query, req.params.id], (err, rows) => {
+        const pessoa = await con.query(up, [query, req.params.id], (err, rows) => {
             try {
-                console.log([query])
                 console.log("Successfully changed");
                 res.json(rows);
             } catch (error) {
