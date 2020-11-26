@@ -1,5 +1,4 @@
 const con = require('../db');
-const uniqid = require('uniqid');
 
 const ins = 'INSERT INTO emprestimo set ?';
 
@@ -7,7 +6,6 @@ const up = 'UPDATE emprestimo Set ? where id_emp = ?';
 
 module.exports = {
     async index(req, res) {
-        const id = uniqid();
         con.query('select * from emprestimos_pagamentos', (err, rows) => {
             try {
                 res.json([id, rows]);
