@@ -8,7 +8,7 @@ module.exports = {
     async index(req, res) {
         con.query('select * from emprestimos_pagamentos', (err, rows) => {
             try {
-                res.json([id, rows]);
+                res.json(rows);
             } catch (error) {
                 console.error(err);
             }
