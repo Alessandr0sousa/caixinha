@@ -15,7 +15,7 @@ module.exports = {
         });
     },
     async show(req, res) {
-        con.query('select * from pagamentos where id_pag = ?', [req.params.id], (err, rows) => {
+        con.query('select * from pagamentos where emprestimo = ?', [req.params.id], (err, rows) => {
             try {
                 res.json(rows);
             } catch (error) {
