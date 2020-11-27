@@ -32,6 +32,14 @@ routes.get('/pagamento/:id', PagamentoController.show);
 routes.delete('/pagamento/:id', PagamentoController.destroy);
 routes.post('/pagamento', PagamentoController.store);
 routes.put('/pagamento/:id', PagamentoController.update);
+//Rotas da tabela grupo
+const GrupoController = require('./controllers/GrupoController');
+
+routes.get('/grupo', GrupoController.index);
+routes.get('/grupo/:id', GrupoController.show);
+routes.delete('/grupo/:id', GrupoController.destroy);
+routes.post('/grupo', GrupoController.store);
+routes.put('/grupo/:id', GrupoController.update);
 
 
 module.exports = routes;
