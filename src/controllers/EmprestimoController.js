@@ -6,7 +6,7 @@ const up = 'UPDATE emprestimo Set ? where id_emp = ?';
 
 module.exports = {
     async index(req, res) {
-        con.query('select * from emprestimo', (err, rows) => {
+        con.query('select * from vw_emprestimo', (err, rows) => {
             try {
                 res.json(rows);
             } catch (error) {
@@ -15,7 +15,7 @@ module.exports = {
         });
     },
     async show(req, res) {
-        con.query('select * from emprestimo where id_emp = ?', [req.params.id], (err, rows) => {
+        con.query('select * from vw_emprestimo where id_emp = ?', [req.params.id], (err, rows) => {
             try {
                 res.json(rows);
             } catch (error) {
