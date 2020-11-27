@@ -15,7 +15,7 @@ module.exports = {
         });
     },
     async show(req, res) {
-        con.query('select * from vw_emprestimo where id_emp = ?', [req.params.id], (err, rows) => {
+        con.query('select * from vw_emprestimo where pessoa = ?', [req.params.id], (err, rows) => {
             try {
                 res.json(rows);
             } catch (error) {
