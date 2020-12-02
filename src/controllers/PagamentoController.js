@@ -35,7 +35,6 @@ module.exports = {
     async store(req, res) {
         con.query(ins, [req.body], (err, rows) => {
             try {
-                console.log('Successfully inserted');
                 res.json(rows);
             } catch (error) {
                 res.json(err);
