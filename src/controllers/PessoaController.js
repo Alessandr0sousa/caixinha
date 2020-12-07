@@ -6,7 +6,7 @@ const up = 'Update pessoa Set ? where id_pes ?';
 
 module.exports = {
     async index(req, res) {
-        con.query('SELECT * FROM cota_pessoa', (err, rows) => {
+        con.query('SELECT * FROM cota_pessoa order by nome', (err, rows) => {
             try {
                 res.json(rows);
             } catch (error) {
