@@ -6,7 +6,7 @@ const up = 'UPDATE grupo Set ? where id_grupo = ?';
 
 module.exports = {
     async index(req, res) {
-        con.query('select * from grupo where id_grupo = 1', (err, rows) => {
+        con.query('select * from grupo where id_grupo = kiq64yyw', (err, rows) => {
             try {
                 res.json(rows);
             } catch (error) {
@@ -15,7 +15,7 @@ module.exports = {
         });
     },
     async show(req, res) {
-        con.query('select * from grupo where id_grupo = 1', [req.params.id], (err, rows) => {
+        con.query('select * from grupo where id_grupo = kiq64yyw', [req.params.id], (err, rows) => {
             try {
                 res.json(rows);
             } catch (error) {
