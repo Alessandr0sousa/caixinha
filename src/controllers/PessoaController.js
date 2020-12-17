@@ -1,8 +1,11 @@
+const { default: Login } = require('../../../caixinhaweb/src/pages/signin');
 const con = require('../db');
 
 const ins = 'INSERT INTO pessoa set ?';
 
 const up = 'Update pessoa Set ? where id_pes ?';
+
+const sel = 'SELECT * FROM `pessoa` WHERE nome like ? and senha = ? '
 
 module.exports = {
     async index(req, res) {
@@ -14,12 +17,30 @@ module.exports = {
             }
         });
     },
+    async login(req, res) {
+        con.query(sel, (err, rows) => {
+            try {
+                const response = rows.map(row => {
+                    const { nome, telefone, grupo, tipo_acesso } = row;
+                    return {
+                        nome,
+                        telefone,
+                        grupo,
+                        tipo_acesso
+                    }
+                });
+                return console.log(res.json(response));
+            } catch (error) {
+                console.error(err);
+            }
+        });
+    },
     async show(req, res) {
         con.query('SELECT * FROM cota_pessoa where id_cota = ?', [req.params.id], (err, rows) => {
             try {
-                const response = rows.map(row=> {
-                    const{id_pes, id_cota, nome, ...parcela} = row;
-                    return{
+                const response = rows.map(row => {
+                    const { id_pes, id_cota, nome, ...parcela } = row;
+                    return {
                         id_pes,
                         id_cota,
                         nome,
