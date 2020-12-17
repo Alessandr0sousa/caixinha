@@ -17,24 +17,6 @@ module.exports = {
             }
         });
     },
-    async login(req, res) {
-        con.query(sel, (err, rows) => {
-            try {
-                const response = rows.map(row => {
-                    const { nome, telefone, grupo, tipo_acesso } = row;
-                    return {
-                        nome,
-                        telefone,
-                        grupo,
-                        tipo_acesso
-                    }
-                });
-                return console.log(res.json(response));
-            } catch (error) {
-                console.error(err);
-            }
-        });
-    },
     async show(req, res) {
         con.query('SELECT * FROM cota_pessoa where id_cota = ?', [req.params.id], (err, rows) => {
             try {
