@@ -5,7 +5,7 @@ const PessoaController = require('./controllers/PessoaController');
 
 routes.get('/pessoa', PessoaController.index);
 routes.get('/pessoa/:id', PessoaController.show);
-routes.get(`/pessoa/:nome/:senha`, PessoaController.login);
+routes.get(`/login`, PessoaController.login);
 routes.delete('/pessoa/:id', PessoaController.destroy);
 routes.post('/pessoa', PessoaController.store);
 routes.put('/pessoa/:id', PessoaController.update);

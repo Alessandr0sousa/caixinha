@@ -5,7 +5,7 @@ const ins = 'INSERT INTO pessoa set ?';
 
 const up = 'Update pessoa Set ? where id_pes ?';
 
-const sel = 'SELECT * FROM `pessoa` WHERE nome like ? and senha = ? '
+const sel = "SELECT * FROM pessoa WHERE ?";
 
 module.exports = {
     async index(req, res) {
@@ -29,7 +29,7 @@ module.exports = {
                         tipo_acesso
                     }
                 });
-                return console.log(res.json(response));
+                return res.json(response);
             } catch (error) {
                 console.error(err);
             }
